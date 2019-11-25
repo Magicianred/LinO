@@ -69,14 +69,6 @@ Nome, e-mail, login, senha e dados financeiros.
 Para inserir um novo gasto, é necessário definir o grupo que deverá pagar.
 Categoria da compra, porcentagens de pagamento, o período máximo para ser realizado e a forma de pagamento.
 
-# Implementação técnica
-
-## Diagrama de casos de Uso
-![Diagrama de casos de Uso](/images/Usecase.png)
-
-## Diagrama ER de banco de dados
-![Diagrama ER de banco de dados](/images/db_pf.png)
-
 ### Mensagens internas
 
 Rotas utilizadas pela aplicação web para executar metodos de **POST** e **GET** no banco de dados. Onde o retorno de cada uma das funções estara contido em uma sessão para renderização de páginas web.
