@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="712fb58c-c8b9-4c54-a322-368d21b3e31a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hello/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/linO/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hello/Greeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/linO/Greeting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hello/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/linO/GreetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hello/GreetingControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/linO/GreetingControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/linO/Greeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/linO/LinO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/linO/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/linO/LinOController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +25,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -60,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574712926439</updated>
       <workItem from="1574712927706" duration="3694000" />
+      <workItem from="1574716938334" duration="1190000" />
     </task>
     <servers />
   </component>
@@ -71,7 +75,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
