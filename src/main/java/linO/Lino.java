@@ -1,11 +1,11 @@
 package linO;
 
-public class LinO {
+public class Lino {
 
     private final long id;
     private final String content;
 
-    public LinO(long id, String content) {
+    public Lino(long id, String content) {
         this.id = id;
         this.content = content;
     }
