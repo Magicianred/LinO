@@ -86,3 +86,25 @@ Rotas utilizadas pela aplicação web para executar metodos de **POST** e **GET*
 |```POST``` /removeUsuarioGrupo|Desassocia um usuário de um grupo|
 |```POST``` /insereGasto|Insere um novo gasto de grupo.|
 |```POST``` /atualizaGasto|Atualiza informações sobre os gastos de um grupo.|
+
+## Conceitos básicos
+* [Internacionalização](https://www.w3.org/International/questions/qa-i18n) - Para realizar a internacionalização utilizamos o [Loco](https://localise.biz/nado/agile-promoter-html#!l=57646) .
+* [ESLint](https://eslint.org/) - Ferramenta para verificar o [lint](https://medium.com/emanuelg-blog/escolha-automatizar-eslint-6077128a3efe) do código estaticamente.
+* [Design pattern](https://www.opus-software.com.br/design-patterns/) - Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes durante o desenvolvimento de um software. Mais informações no [catalogo de design pattern](https://refactoring.guru/design-patterns). 
+* [Projeto de software](https://pt.wikipedia.org/wiki/Padr%C3%A3o_de_projeto_de_software) - Padrões de projeto.
+* [API e APIRestfull](https://www.freelancinggig.com/blog/2018/11/02/what-is-the-difference-between-api-and-rest-api/) - O que é API e APIRest.
+* [Docker](https://www.redhat.com/pt-br/topics/containers/what-is-docker) - O que é docker, um exemplo para [iniciar com docker](https://docs.docker.com/compose/gettingstarted/).
+* [ORM](https://www.devmedia.com.br/orm-object-relational-mapper/19056) - Conceitos básicos de Object Relational Mapper.
+
+## Front-end
+* [AngularJS](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) - AngularJS é um Framework MV. 
+* [Spring Boot](https://medium.com/@oandersonbm/spring-boot-estrutura-do-c%C3%B3digo-5fafa2f39f5d) - O [Spring Boot](
+https://blog.geekhunter.com.br/tudo-o-que-voce-precisa-saber-sobre-o-spring-boot/) é uma ferramenta que visa facilitar o processo de configuração e publicação de aplicações que utilizem o ecossistema Spring.
+
+
+## Ferramentas
+* [Intellij](https://intellij-support.jetbrains.com/hc/en-us#) - IDE para programação.
+
+
+## Links importantes
+* [Tutorial Django Girls](https://tutorial.djangogirls.org/pt/) -  Projeto de incentivo a programação.
