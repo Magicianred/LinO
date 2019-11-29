@@ -104,7 +104,3 @@ https://blog.geekhunter.com.br/tudo-o-que-voce-precisa-saber-sobre-o-spring-boot
 
 ## Ferramentas
 * [Intellij](https://intellij-support.jetbrains.com/hc/en-us#) - IDE para programação.
-
-
-## Links importantes
-* [Tutorial Django Girls](https://tutorial.djangogirls.org/pt/) -  Projeto de incentivo a programação.
