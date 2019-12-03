@@ -1,30 +1,43 @@
 package linO.wallet;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class walletController {
+
     /* Informa o saldo atual de um usuário. */
-    @RequestMapping("/verifyWallet")
-    public String verifyWallet() {
-        return "Verificar saldo do usuário!";
+    @GetMapping("/verifyWallet")
+    public ResponseEntity<String> verifyWallet() {
+        return new ResponseEntity<String>(
+                "verifyWallet", HttpStatus.OK
+        );
     }
 
     /* Atualiza informações sobre os gastos de um grupo. */
-    @RequestMapping("/updateWallet")
-    public String updateWallet() {
-        return "Atualiza um gasto existente.";
+    @PostMapping("/updateWallet")
+    public ResponseEntity<String> updateWallet() {
+        return new ResponseEntity<String>(
+                "updateWallet", HttpStatus.OK
+        );
     }
 
     /* Insere um novo gasto em um usuário. */
-    @RequestMapping("/insertSpendInWallet")
-    public String insertSpendInWallet() {
-        return "Insere um novo gasto.";
+    @PostMapping("/insertSpendInWallet")
+    public ResponseEntity<String> insertSpendInWallet() {
+        return new ResponseEntity<String>(
+                "insertSpendInWallet", HttpStatus.OK
+        );
     }
 
     /* Insere um novo gasto em um usuário. */
-    @RequestMapping("/updateSpendInWallet")
-    public String updateSpendInWallet() {
-        return "Insere um novo gasto.";
+    @PostMapping("/updateSpendInWallet")
+    public ResponseEntity<String> updateSpendInWallet() {
+        return new ResponseEntity<String>(
+                "updateSpendInWallet", HttpStatus.OK
+        );
     }
-
 }
