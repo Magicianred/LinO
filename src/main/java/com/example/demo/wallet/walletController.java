@@ -1,4 +1,4 @@
-package linO.wallet;
+package com.example.demo.wallet;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class walletController {
+
+    /* Informa o saldo atual de um usuário. */
+    @GetMapping("/")
+    public ResponseEntity<String> Hello() {
+        return new ResponseEntity<String>(
+                "Hello!", HttpStatus.OK
+        );
+    }
 
     /* Informa o saldo atual de um usuário. */
     @GetMapping("/verifyWallet")
