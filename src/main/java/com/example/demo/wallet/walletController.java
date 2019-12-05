@@ -1,14 +1,21 @@
 package com.example.demo.wallet;
 
+import com.example.demo.model.Wallet;
+import com.example.demo.repository.WalletRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class walletController {
 
+    @Autowired
+    private WalletRepository walletRepository;
     /* Informa o saldo atual de um usuário. */
     @GetMapping("/")
     public ResponseEntity<String> Hello() {
@@ -19,9 +26,9 @@ public class walletController {
 
     /* Informa o saldo atual de um usuário. */
     @GetMapping("/verifyWallet")
-    public ResponseEntity<String> verifyWallet() {
-        return new ResponseEntity<String>(
-                "verifyWallet", HttpStatus.OK
+    public ResponseEntity<List<Wallet>> verifyWallet() {
+        return new ResponseEntity<List<Wallet>>(
+                walletRepository.findAll(), HttpStatus.OK
         );
     }
 
