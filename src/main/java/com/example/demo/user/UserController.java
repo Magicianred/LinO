@@ -27,10 +27,9 @@ public class UserController {
 
     /* Insere um novo usuário. */
     @PostMapping
-    public ResponseEntity<String> insertUser() {
-        return new ResponseEntity<String>(
-                "insertUser", HttpStatus.OK
-        );
+    public User insert(@RequestBody User user) {
+        System.out.println(user);
+        return newRepository.save(user);
     }
 
     /* Atualiza o usuário. */
