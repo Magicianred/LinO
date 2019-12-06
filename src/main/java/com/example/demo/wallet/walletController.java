@@ -1,6 +1,5 @@
 package com.example.demo.wallet;
 
-import com.example.demo.model.User;
 import com.example.demo.model.Wallet;
 import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ public class walletController {
         return walletRepository.save(wallet);
     }
 
-
-
     /* Informa o saldo atual de um usuário. */
     @GetMapping
     public ResponseEntity<List<Wallet>> verifyWallet() {
@@ -35,11 +32,11 @@ public class walletController {
     }
 
     /* Atualiza informações sobre os gastos de um grupo. */
-    @PostMapping("/{id}")
-    public ResponseEntity<String> updateWallet() {
-        return new ResponseEntity<String>(
-                "updateWallet", HttpStatus.OK
-        );
+    @GetMapping(path = {"/{id}"})
+    public ResponseEntity findById(@PathVariable Long id){
+        return walletRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     /* Insere um novo gasto em um usuário. */
