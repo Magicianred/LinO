@@ -1,6 +1,5 @@
 package com.example.demo.userGroup;
 
-import com.example.demo.model.User;
 import com.example.demo.model.UserGroup;
 import com.example.demo.repository.UserGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +29,11 @@ public class UserGroupController {
     @PostMapping
     public UserGroup insert(@RequestBody UserGroup userGroup) {
         return newRepository.save(userGroup);
+    }
+
+    /* Atualiza informações sobre os gastos de um grupo. */
+    @DeleteMapping(path = {"/delete/{id}"})
+    public void delete(@PathVariable Long id){
+        newRepository.deleteById(id);
     }
 }

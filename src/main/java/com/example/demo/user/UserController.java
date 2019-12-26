@@ -38,4 +38,9 @@ public class UserController {
                 "updateUser", HttpStatus.OK
         );
     }
+
+    /* Remove user de um grupo. */
+    @DeleteMapping(path = {"/{id}"})
+    public void delete(@PathVariable Long id) {  newRepository.deleteById(id); }
+
 }
