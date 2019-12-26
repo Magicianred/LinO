@@ -16,13 +16,13 @@ public class WalletController {
     @Autowired
     private WalletRepository walletRepository;
 
-    /* Insere nova carteira. */
+    /* Insert new wallet. */
     @PostMapping
     public Wallet insert(@RequestBody Wallet wallet) {
         return walletRepository.save(wallet);
     }
 
-    /* Informa o saldo atual de um usuário. */
+    /* Info about wallet */
     @GetMapping
     public ResponseEntity<List<Wallet>> verifyWallet() {
         return new ResponseEntity<List<Wallet>>(
@@ -36,7 +36,7 @@ public class WalletController {
         walletRepository.deleteById(id);
     }
 
-    /* Atualiza informações sobre os gastos de um grupo. */
+    /* Get info from the wallet */
     @GetMapping(path = {"/{id}"})
     public ResponseEntity findById(@PathVariable Long id){
         return walletRepository.findById(id)
@@ -44,13 +44,15 @@ public class WalletController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
+    /* Update info into the wallet */
     @PutMapping(value="/{id}")
     public ResponseEntity update(@PathVariable("id") long id,
                                  @RequestBody Wallet wallet) {
         return walletRepository.findById(id)
                 .map(record -> {
                     record.setBalance(wallet.getBalance());
+                    record.setToPay(wallet.getToPay());
+                    record.setToReceive(wallet.getToReceive());
                     Wallet updated = walletRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
