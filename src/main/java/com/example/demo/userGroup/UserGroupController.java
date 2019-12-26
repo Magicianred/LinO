@@ -15,25 +15,39 @@ import java.util.List;
 public class UserGroupController {
 
     @Autowired
-    private UserGroupRepository newRepository;
+    private UserGroupRepository userGroupRepository;
 
-    /* Informa todos os grupos registrados no banco. */
+    /* List all users from group. */
     @GetMapping
-    public ResponseEntity<List<UserGroup>> listGroup() {
+    public ResponseEntity<List<UserGroup>> listGroup () {
         return new ResponseEntity<List<UserGroup>>(
-                newRepository.findAll(), HttpStatus.OK
+                userGroupRepository.findAll(), HttpStatus.OK
         );
     }
 
-    /* Insere um novo grupo. */
+    /* Insert user into group. */
     @PostMapping
-    public UserGroup insert(@RequestBody UserGroup userGroup) {
-        return newRepository.save(userGroup);
+    public UserGroup insert (@RequestBody UserGroup userGroup) {
+        return userGroupRepository.save(userGroup);
     }
 
-    /* Deleta usuário de um grupo */
-    @DeleteMapping(path = {"/delete/{id}"})
-    public void delete(@PathVariable Long id){
-        newRepository.deleteById(id);
+
+    /* Delete user from group */
+    @DeleteMapping(path = {"/{id}"})
+    public void delete (@PathVariable Long id) {
+        userGroupRepository.deleteById(id);
+    }
+
+    /* Update userGroup */
+    @PutMapping(value = "/{id}")
+    public ResponseEntity update (@PathVariable("id") long id,
+                                  @RequestBody UserGroup userGroup) {
+        return userGroupRepository.findById(id)
+                .map(record -> {
+                    record.setName(userGroup.getName());
+                    record.setDescription(userGroup.getDescription());
+                    UserGroup updated = userGroupRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 }

@@ -44,6 +44,7 @@ public class WalletController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+
     @PutMapping(value="/{id}")
     public ResponseEntity update(@PathVariable("id") long id,
                                  @RequestBody Wallet wallet) {
