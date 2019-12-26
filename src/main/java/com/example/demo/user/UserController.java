@@ -1,6 +1,7 @@
 package com.example.demo.user;
 
 import com.example.demo.model.User;
+import com.example.demo.model.Wallet;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,38 +10,46 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/users")
+@RequestMapping("/user")
 
 @RestController
 public class UserController {
 
     @Autowired
-    private UserRepository newRepository;
+    private UserRepository userRepository;
 
-    /* Informa todos usuários registrados no banco. */
+    /* List all users */
     @GetMapping
-    public ResponseEntity<List<User>> listUser() {
+    public ResponseEntity<List<User>> listUser () {
         return new ResponseEntity<List<User>>(
-                newRepository.findAll(), HttpStatus.OK
+                userRepository.findAll(), HttpStatus.OK
         );
     }
 
-    /* Insere um novo usuário. */
+    /* Insert new user. */
     @PostMapping
-    public User insert(@RequestBody User user) {
-        return newRepository.save(user);
+    public User insert (@RequestBody User user) {
+        return userRepository.save(user);
     }
 
-    /* Atualiza o usuário. */
-    @PutMapping
-    public ResponseEntity<String> updateUser() {
-        return new ResponseEntity<String>(
-                "updateUser", HttpStatus.OK
-        );
+    /* Update user. */
+    @PutMapping(value = "/{id}")
+    public ResponseEntity update (@PathVariable("id") long id,
+                                  @RequestBody User user) {
+        return userRepository.findById(id)
+                .map(record -> {
+                    record.setLogin(user.getLogin());
+                    record.setPassword(user.getPassword());
+                    record.setName(user.getName());
+                    User updated = userRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
-    /* Remove user de um grupo. */
+    /* Delete user. */
     @DeleteMapping(path = {"/{id}"})
-    public void delete(@PathVariable Long id) {  newRepository.deleteById(id); }
+    public void delete (@PathVariable Long id) {
+        userRepository.deleteById(id);
+    }
 
 }
