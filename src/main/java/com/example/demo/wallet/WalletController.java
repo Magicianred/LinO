@@ -43,4 +43,15 @@ public class WalletController {
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping(value="/{id}")
+    public ResponseEntity update(@PathVariable("id") long id,
+                                 @RequestBody Wallet wallet) {
+        return walletRepository.findById(id)
+                .map(record -> {
+                    record.setBalance(wallet.getBalance());
+                    Wallet updated = walletRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
+    }
 }
