@@ -1,7 +1,6 @@
 package com.example.demo.user;
 
 import com.example.demo.model.User;
-import com.example.demo.model.Wallet;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +23,14 @@ public class UserController {
         return new ResponseEntity<List<User>>(
                 userRepository.findAll(), HttpStatus.OK
         );
+    }
+
+    /* Find user by id */
+    @GetMapping(path = {"/{id}"})
+    public ResponseEntity findById(@PathVariable Long id){
+        return userRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     /* Insert new user. */
