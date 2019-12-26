@@ -31,7 +31,7 @@ public class UserGroupController {
         return newRepository.save(userGroup);
     }
 
-    /* Atualiza informações sobre os gastos de um grupo. */
+    /* Deleta usuário de um grupo */
     @DeleteMapping(path = {"/delete/{id}"})
     public void delete(@PathVariable Long id){
         newRepository.deleteById(id);

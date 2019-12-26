@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/wallet")
-
 @RestController
-public class walletController {
+@RequestMapping("/wallet")
+public class WalletController {
 
     @Autowired
     private WalletRepository walletRepository;
 
     /* Insere nova carteira. */
     @PostMapping
-    public Wallet insert(@RequestBody Wallet wallet){
+    public Wallet insert(@RequestBody Wallet wallet) {
         return walletRepository.save(wallet);
     }
 
@@ -31,27 +30,17 @@ public class walletController {
         );
     }
 
+    /* Delete wallet by id */
+    @DeleteMapping(path = {"/{id}"})
+    public void delete(@PathVariable Long id){
+        walletRepository.deleteById(id);
+    }
+
     /* Atualiza informações sobre os gastos de um grupo. */
     @GetMapping(path = {"/{id}"})
     public ResponseEntity findById(@PathVariable Long id){
         return walletRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-    /* Insere um novo gasto em um usuário. */
-    @PostMapping("/insertSpendInWallet")
-    public ResponseEntity<String> insertSpendInWallet() {
-        return new ResponseEntity<String>(
-                "insertSpendInWallet", HttpStatus.OK
-        );
-    }
-
-    /* Insere um novo gasto em um usuário. */
-    @PostMapping("/updateSpendInWallet")
-    public ResponseEntity<String> updateSpendInWallet() {
-        return new ResponseEntity<String>(
-                "updateSpendInWallet", HttpStatus.OK
-        );
     }
 }
