@@ -1,6 +1,8 @@
 package com.example.demo.wallet;
 
 import com.example.demo.business.WalletBusiness;
+import com.example.demo.dto.WalletDTO;
+import com.example.demo.dto.WalletResponseDTO;
 import com.example.demo.model.Wallet;
 import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,9 @@ public class WalletController {
 
     /* Insert new wallet. */
     @PostMapping
-    public Wallet insert (@RequestBody Wallet wallet) {
-        return walletBusiness.save(wallet);
+    public ResponseEntity<Wallet> insert(@RequestBody WalletDTO dto) {
+        Wallet wallet = walletBusiness.save(dto.dtoToObject());
+        return new ResponseEntity<>(wallet, HttpStatus.CREATED);
     }
 
     /* Info about wallet */

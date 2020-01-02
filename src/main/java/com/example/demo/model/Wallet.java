@@ -24,6 +24,13 @@ public class Wallet {
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 
+    public Wallet (Double balance, Double toPay, Double toReceive, User user) {
+        this.balance = balance;
+        this.toPay = toPay;
+        this.toReceive = toReceive;
+        this.user = user;
+    }
+
     public Long getId () {
         return id;
     }
