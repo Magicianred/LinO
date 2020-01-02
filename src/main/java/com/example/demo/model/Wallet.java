@@ -56,11 +56,11 @@ public class Wallet {
         this.toReceive = toReceive;
     }
 
-    public User getUser() {
+    public User getUser () {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser (User user) {
         this.user = user;
     }
 }

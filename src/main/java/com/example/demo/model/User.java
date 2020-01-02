@@ -3,7 +3,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -14,7 +14,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user")
     private Wallet wallet;
 
     @Column(name = "login")
@@ -22,6 +22,13 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    public User (Long id) {
+        this.id = id;
+    }
+
+    public User () {
+    }
 
     public Long getId () {
         return id;
@@ -61,5 +68,12 @@ public class User {
 
     public void setPassword (String password) {
         this.password = password;
+    }
+
+    public void printUser () {
+        System.out.println("ID: "+this.id);
+        System.out.println("Name: "+this.name);
+        System.out.println("PASS: "+this.password);
+        System.out.println("LOGIN: "+this.login);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.wallet;
 
+import com.example.demo.business.WalletBusiness;
 import com.example.demo.model.Wallet;
 import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,38 +17,42 @@ public class WalletController {
     @Autowired
     private WalletRepository walletRepository;
 
+    @Autowired
+    private WalletBusiness walletBusiness;
+
     /* Insert new wallet. */
     @PostMapping
-    public Wallet insert(@RequestBody Wallet wallet) {
-        return walletRepository.save(wallet);
+    public Wallet insert (@RequestBody Wallet wallet) {
+        return walletBusiness.save(wallet);
     }
 
     /* Info about wallet */
     @GetMapping
-    public ResponseEntity<List<Wallet>> verifyWallet() {
+    public ResponseEntity<List<Wallet>> verifyWallet () {
+        List<Wallet> wallet = walletRepository.findAll();
         return new ResponseEntity<List<Wallet>>(
-                walletRepository.findAll(), HttpStatus.OK
+                wallet, HttpStatus.OK
         );
     }
 
     /* Delete wallet by id */
     @DeleteMapping(path = {"/{id}"})
-    public void delete(@PathVariable Long id){
+    public void delete (@PathVariable Long id) {
         walletRepository.deleteById(id);
     }
 
     /* Get info from the wallet */
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id){
+    public ResponseEntity findById (@PathVariable Long id) {
         return walletRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     /* Update info into the wallet */
-    @PutMapping(value="/{id}")
-    public ResponseEntity update(@PathVariable("id") long id,
-                                 @RequestBody Wallet wallet) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity update (@PathVariable("id") long id,
+                                  @RequestBody Wallet wallet) {
         return walletRepository.findById(id)
                 .map(record -> {
                     record.setBalance(wallet.getBalance());
