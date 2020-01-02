@@ -11,7 +11,7 @@ public class WalletDTO {
     private Double toReceive;
     private User user;
 
-    public Wallet dtoToObject () {
+    public Wallet fromDTO () {
         return new Wallet(balance, toPay, toReceive, user);
     }
 

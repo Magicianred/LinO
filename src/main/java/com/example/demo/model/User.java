@@ -14,9 +14,6 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "user")
-    private Wallet wallet;
-
     @Column(name = "login")
     private String login;
 
@@ -44,14 +41,6 @@ public class User {
 
     public void setName (String name) {
         this.name = name;
-    }
-
-    public Wallet getWallet () {
-        return wallet;
-    }
-
-    public void setWallet (Wallet wallet) {
-        this.wallet = wallet;
     }
 
     public String getLogin () {

@@ -25,7 +25,7 @@ public class WalletController {
     /* Insert new wallet. */
     @PostMapping
     public ResponseEntity<Wallet> insert(@RequestBody WalletDTO dto) {
-        Wallet wallet = walletBusiness.save(dto.dtoToObject());
+        Wallet wallet = walletBusiness.save(dto.fromDTO());
         return new ResponseEntity<>(wallet, HttpStatus.CREATED);
     }
 
@@ -33,6 +33,7 @@ public class WalletController {
     @GetMapping
     public ResponseEntity<List<Wallet>> verifyWallet () {
         List<Wallet> wallet = walletRepository.findAll();
+        System.out.println("LIST \n\n"+wallet+"\n\n");
         return new ResponseEntity<List<Wallet>>(
                 wallet, HttpStatus.OK
         );

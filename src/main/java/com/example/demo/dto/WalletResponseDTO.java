@@ -13,9 +13,14 @@ public class WalletResponseDTO {
     public WalletResponseDTO (Long id, Double balance, Double toPay, Double toReceive, User user) {
     }
 
-
-    public static WalletResponseDTO objectToDTO (Wallet wallet) {
+    public static WalletResponseDTO fromObject (Wallet wallet) {
         System.out.println("Wallet Response");
-        return new WalletResponseDTO(wallet.getId(), wallet.getBalance(), wallet.getToPay(), wallet.getToReceive(), wallet.getUser());
+        User user = null;
+        user.setName(wallet.getUser().getName());
+        user.setLogin(wallet.getUser().getLogin());
+        user.setPassword(wallet.getUser().getPassword());
+        return new WalletResponseDTO(wallet.getId(), wallet.getBalance(), wallet.getToPay(), wallet.getToReceive(), user);
     }
+
+
 }

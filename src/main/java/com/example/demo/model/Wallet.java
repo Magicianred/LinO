@@ -24,6 +24,7 @@ public class Wallet {
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 
+    public Wallet () {};
     public Wallet (Double balance, Double toPay, Double toReceive, User user) {
         this.balance = balance;
         this.toPay = toPay;
