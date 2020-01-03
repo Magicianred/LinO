@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,54 +13,68 @@ public class Spend {
     private String category;
     private Long value;
     private Date date;
-    private Long walletId;
 
-    public Long getId() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "walletId", referencedColumnName = "id")
+    private Wallet wallet;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userGroupId", referencedColumnName = "id")
+    private UserGroup userGroup;
+
+    public Long getId () {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId (Long id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName (String name) {
         this.name = name;
     }
 
-    public String getCategory() {
+    public String getCategory () {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory (String category) {
         this.category = category;
     }
 
-    public Long getValue() {
+    public Long getValue () {
         return value;
     }
 
-    public void setValue(Long value) {
+    public void setValue (Long value) {
         this.value = value;
     }
 
-    public Date getDate() {
+    public Date getDate () {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate (Date date) {
         this.date = date;
     }
 
-    public Long getWalletId() {
-        return walletId;
+    public Wallet getWallet () {
+        return wallet;
     }
 
-    public void setWalletId(Long walletId) {
-        this.walletId = walletId;
+    public void setWallet (Wallet wallet) {
+        this.wallet = wallet;
     }
 
+    public UserGroup getUserGroup () {
+        return userGroup;
+    }
+
+    public void setUserGroup (UserGroup userGroup) {
+        this.userGroup = userGroup;
+    }
 }

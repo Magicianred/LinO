@@ -1,5 +1,7 @@
-package com.example.demo.userGroup;
+package com.example.demo.controller.userGroup;
 
+import com.example.demo.business.UserGroupBusiness;
+import com.example.demo.dto.UserGroupDTO;
 import com.example.demo.model.UserGroup;
 import com.example.demo.repository.UserGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,16 @@ public class UserGroupController {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
+    @Autowired
+    private UserGroupBusiness userGroupBusiness;
+
+    /* Insert user into group. */
+    @PostMapping
+    public ResponseEntity<UserGroup> insert(@RequestBody UserGroupDTO dto) {
+        UserGroup userGroup = userGroupBusiness.save(dto.fromDTO());
+        return new ResponseEntity<>(userGroup, HttpStatus.CREATED);
+    }
+
     /* List all users from group. */
     @GetMapping
     public ResponseEntity<List<UserGroup>> listGroup () {
@@ -24,13 +36,6 @@ public class UserGroupController {
                 userGroupRepository.findAll(), HttpStatus.OK
         );
     }
-
-    /* Insert user into group. */
-    @PostMapping
-    public UserGroup insert (@RequestBody UserGroup userGroup) {
-        return userGroupRepository.save(userGroup);
-    }
-
 
     /* Delete user from group */
     @DeleteMapping(path = {"/{id}"})

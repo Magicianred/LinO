@@ -1,8 +1,7 @@
-package com.example.demo.wallet;
+package com.example.demo.controller.wallet;
 
 import com.example.demo.business.WalletBusiness;
 import com.example.demo.dto.WalletDTO;
-import com.example.demo.dto.WalletResponseDTO;
 import com.example.demo.model.Wallet;
 import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;

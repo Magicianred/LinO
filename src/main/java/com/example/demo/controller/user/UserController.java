@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.example.demo.controller.user;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
@@ -17,6 +17,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    /* Insert new user. */
+    @PostMapping
+    public User insert (@RequestBody User user) {
+        return userRepository.save(user);
+    }
+
     /* List all users */
     @GetMapping
     public ResponseEntity<List<User>> listUser () {
@@ -31,12 +37,6 @@ public class UserController {
         return userRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-    /* Insert new user. */
-    @PostMapping
-    public User insert (@RequestBody User user) {
-        return userRepository.save(user);
     }
 
     /* Update user. */
