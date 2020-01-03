@@ -8,10 +8,20 @@ import java.util.Date;
 public class Spend {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "value")
     private Long value;
+
+    @Column(name = "date")
     private Date date;
 
     @OneToOne(cascade = CascadeType.ALL)
