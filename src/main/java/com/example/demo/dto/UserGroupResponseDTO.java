@@ -11,7 +11,6 @@ public class UserGroupResponseDTO {
     public UserGroupResponseDTO (String name, String description) { }
 
     public static UserGroupResponseDTO fromObject (UserGroup userGroup) {
-        System.out.println("UserGroup Response");
         return new UserGroupResponseDTO(userGroup.getName(), userGroup.getDescription());
     }
 }

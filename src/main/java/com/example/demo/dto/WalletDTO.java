@@ -12,8 +12,6 @@ public class WalletDTO {
     private User user;
 
     public Wallet toObject () {
-
-        System.out.println("Balance"+this.balance+"ToPay"+this.toPay+"toReceive"+this.toReceive);
         return new Wallet(this.balance, this.toPay, this.toReceive, this.user);
     }
 

@@ -1,4 +1,4 @@
-package com.example.demo.controller.wallet;
+package com.example.demo.controller;
 
 import com.example.demo.business.WalletBusiness;
 import com.example.demo.dto.WalletDTO;

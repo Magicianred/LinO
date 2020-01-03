@@ -32,6 +32,11 @@ public class Spend {
     @JoinColumn(name = "userGroupId", referencedColumnName = "id")
     private UserGroup userGroup;
 
+    public Spend (){};
+
+    public Spend (String name, String category, Long value, Date date, Wallet wallet, UserGroup userGroup) {
+    }
+
     public Long getId () {
         return id;
     }
@@ -86,5 +91,14 @@ public class Spend {
 
     public void setUserGroup (UserGroup userGroup) {
         this.userGroup = userGroup;
+    }
+
+    public void printSpend(){
+        System.out.println("Name"+this.name);
+        System.out.println("Category"+this.category);
+        System.out.println("Value"+this.value);
+        System.out.println("Date"+this.date);
+        System.out.println("Wallet"+this.wallet);
+        System.out.println("userGroup"+this.userGroup);
     }
 }

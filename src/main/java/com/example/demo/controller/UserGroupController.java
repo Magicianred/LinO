@@ -1,4 +1,4 @@
-package com.example.demo.controller.userGroup;
+package com.example.demo.controller;
 
 import com.example.demo.business.UserGroupBusiness;
 import com.example.demo.dto.UserGroupDTO;

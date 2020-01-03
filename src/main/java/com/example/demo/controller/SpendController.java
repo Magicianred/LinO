@@ -1,6 +1,10 @@
-package com.example.demo.controller.spend;
+package com.example.demo.controller;
 
+import com.example.demo.business.SpendBusiness;
+import com.example.demo.dto.SpendDTO;
+import com.example.demo.dto.WalletDTO;
 import com.example.demo.model.Spend;
+import com.example.demo.model.Wallet;
 import com.example.demo.repository.SpendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,11 +21,16 @@ public class SpendController {
     @Autowired
     private SpendRepository spendRepository;
 
-    /* Insere um novo usuário. */
+    @Autowired
+    private SpendBusiness spendBusiness;
+
+    /* Insert new spend. */
     @PostMapping
     public Spend insert(@RequestBody Spend spend) {
-        return spendRepository.save(spend);
+        spend.printSpend();
+        return spendBusiness.save(spend);
     }
+
 
     /* List all users */
     @GetMapping
