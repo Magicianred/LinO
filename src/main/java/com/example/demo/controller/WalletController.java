@@ -32,7 +32,6 @@ public class WalletController {
     @GetMapping
     public ResponseEntity<List<Wallet>> verifyWallet () {
         List<Wallet> wallet = walletRepository.findAll();
-        System.out.println("LIST \n\n"+wallet+"\n\n");
         return new ResponseEntity<List<Wallet>>(
                 wallet, HttpStatus.OK
         );

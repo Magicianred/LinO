@@ -27,9 +27,7 @@ public class SpendBusiness {
         Wallet wallet = walletRepository.findById(spend.getWallet().getId()).orElse(null);
 
         if (userGroup != null && wallet != null) {
-            spend.printSpend();
             spend.setUserGroup(userGroup);
-            spend.printSpend();
             spend.setWallet(wallet);
             spendRepository.save(spend);
             return spend;

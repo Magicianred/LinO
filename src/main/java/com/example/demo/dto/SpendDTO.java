@@ -16,16 +16,11 @@ public class SpendDTO {
     private UserGroup userGroup;
 
     public Spend toObject () {
-        System.out.println("Novosodksodksokdoskdoskdosk--------------------------");
-        this.printSpend();
         Spend spend = new Spend(name, category, value,date, wallet, userGroup);
-        System.out.println("Novosodksodksokdoskdoskdosk--------------------------");
-        spend.printSpend();
         return spend;
     }
 
     public void printSpend(){
-        System.out.println("DTO PRINT");
         System.out.println("Name"+this.name);
         System.out.println("Category"+this.category);
         System.out.println("Value"+this.value);

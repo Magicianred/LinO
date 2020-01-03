@@ -27,7 +27,6 @@ public class SpendController {
     /* Insert new spend. */
     @PostMapping
     public Spend insert(@RequestBody Spend spend) {
-        spend.printSpend();
         return spendBusiness.save(spend);
     }
 
