@@ -25,7 +25,7 @@ public class UserGroupController {
     /* Insert user into group. */
     @PostMapping
     public ResponseEntity<UserGroup> insert(@RequestBody UserGroupDTO dto) {
-        UserGroup userGroup = userGroupBusiness.save(dto.fromDTO());
+        UserGroup userGroup = userGroupBusiness.save(dto.toObject());
         return new ResponseEntity<>(userGroup, HttpStatus.CREATED);
     }
 
