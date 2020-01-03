@@ -24,7 +24,6 @@ public class WalletBusiness {
 
         if (user != null) {
             wallet.setUser(user);
-            user.printUser();
             walletRepository.save(wallet);
             return wallet;
         } else {

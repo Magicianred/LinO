@@ -11,8 +11,10 @@ public class WalletDTO {
     private Double toReceive;
     private User user;
 
-    public Wallet fromDTO () {
-        return new Wallet(balance, toPay, toReceive, user);
+    public Wallet toObject () {
+
+        System.out.println("Balance"+this.balance+"ToPay"+this.toPay+"toReceive"+this.toReceive);
+        return new Wallet(this.balance, this.toPay, this.toReceive, this.user);
     }
 
     public void printWallet () {
@@ -28,5 +30,29 @@ public class WalletDTO {
 
     public void setUser (User user) {
         this.user = user;
+    }
+
+    public Double getBalance () {
+        return balance;
+    }
+
+    public void setBalance (Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getToPay () {
+        return toPay;
+    }
+
+    public void setToPay (Double toPay) {
+        this.toPay = toPay;
+    }
+
+    public Double getToReceive () {
+        return toReceive;
+    }
+
+    public void setToReceive (Double toReceive) {
+        this.toReceive = toReceive;
     }
 }

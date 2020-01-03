@@ -24,7 +24,7 @@ public class WalletController {
     /* Insert new wallet. */
     @PostMapping
     public ResponseEntity<Wallet> insert(@RequestBody WalletDTO dto) {
-        Wallet wallet = walletBusiness.save(dto.fromDTO());
+        Wallet wallet = walletBusiness.save(dto.toObject());
         return new ResponseEntity<>(wallet, HttpStatus.CREATED);
     }
 
