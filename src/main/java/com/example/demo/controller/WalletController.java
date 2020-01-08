@@ -23,7 +23,7 @@ public class WalletController {
 
     /* Insert new wallet. */
     @PostMapping
-    public ResponseEntity<Wallet> insert(@RequestBody WalletDTO dto) {
+    public ResponseEntity<Wallet> insert (@RequestBody WalletDTO dto) {
         Wallet wallet = walletBusiness.save(dto.toObject());
         return new ResponseEntity<>(wallet, HttpStatus.CREATED);
     }
@@ -40,7 +40,12 @@ public class WalletController {
     /* Delete wallet by id */
     @DeleteMapping(path = {"/{id}"})
     public void delete (@PathVariable Long id) {
-        walletRepository.deleteById(id);
+        walletRepository.findById(id)
+                .map(record -> {
+                    record.setUser(null);
+                    walletRepository.deleteById(id);
+                    return null;
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     /* Get info from the wallet */
