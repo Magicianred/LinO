@@ -20,7 +20,7 @@ public class Wallet {
     @Column(name = "toReceive")
     private Double toReceive;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 

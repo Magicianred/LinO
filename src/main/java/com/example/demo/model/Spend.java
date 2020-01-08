@@ -24,11 +24,11 @@ public class Spend {
     @Column(name = "date")
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "walletId", referencedColumnName = "id")
     private Wallet wallet;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "userGroupId", referencedColumnName = "id")
     private UserGroup userGroup;
 

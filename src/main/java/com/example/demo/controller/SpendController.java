@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.business.SpendBusiness;
-import com.example.demo.dto.SpendDTO;
-import com.example.demo.dto.WalletDTO;
 import com.example.demo.model.Spend;
-import com.example.demo.model.Wallet;
 import com.example.demo.repository.SpendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,12 +27,17 @@ public class SpendController {
         return spendBusiness.save(spend);
     }
 
-
     /* List all users */
     @GetMapping
     public ResponseEntity<List<Spend>> listSpend () {
         return new ResponseEntity<List<Spend>>(
                 spendRepository.findAll(), HttpStatus.OK
         );
+    }
+
+    /* Delete spend by id */
+    @DeleteMapping(path = {"/{id}"})
+    public void delete (@PathVariable Long id) {
+        spendRepository.deleteById(id);
     }
 }
