@@ -23,7 +23,7 @@ public class SpendController {
 
     /* Insert new spend. */
     @PostMapping
-    public Spend insert(@RequestBody Spend spend) {
+    public Spend insert (@RequestBody Spend spend) {
         return spendBusiness.save(spend);
     }
 
@@ -38,6 +38,12 @@ public class SpendController {
     /* Delete spend by id */
     @DeleteMapping(path = {"/{id}"})
     public void delete (@PathVariable Long id) {
-        spendRepository.deleteById(id);
+        spendRepository.findById(id)
+                .map(record -> {
+                    record.setUser(null);
+                    record.setUserGroup(null);
+                    spendRepository.deleteById(id);
+                    return null;
+                }).orElse(ResponseEntity.notFound().build());
     }
 }

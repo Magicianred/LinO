@@ -16,19 +16,8 @@ public class WalletBusiness {
     @Autowired
     private UserRepository userRepository;
 
-
     public Wallet save (Wallet wallet) {
-
-        User user = wallet.getUser();
-        user = userRepository.findById(user.getId()).orElse(null);
-
-        if (user != null) {
-            wallet.setUser(user);
             walletRepository.save(wallet);
             return wallet;
-        } else {
-            System.out.println("Usuário nulo");
-            return null;
-        }
     }
 }

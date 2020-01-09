@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 
-import com.example.demo.model.User;
+//import com.example.demo.model.User;
 import com.example.demo.model.Wallet;
 
 public class WalletDTO {
@@ -9,26 +9,26 @@ public class WalletDTO {
     private Double balance;
     private Double toPay;
     private Double toReceive;
-    private User user;
+//    private User user;
 
     public Wallet toObject () {
-        return new Wallet(this.balance, this.toPay, this.toReceive, this.user);
+        return new Wallet(this.balance, this.toPay, this.toReceive);
     }
 
     public void printWallet () {
         System.out.println("Balance" + this.balance);
         System.out.println("toPay" + this.toPay);
         System.out.println("toReceive" + this.toReceive);
-        System.out.println("user" + this.user);
+        //System.out.println("user" + this.user);
     }
 
-    public User getUser () {
-        return this.user;
-    }
+//    public User getUser () {
+//        return this.user;
+//    }
 
-    public void setUser (User user) {
-        this.user = user;
-    }
+//    public void setUser (User user) {
+//        this.user = user;
+//    }
 
     public Double getBalance () {
         return balance;

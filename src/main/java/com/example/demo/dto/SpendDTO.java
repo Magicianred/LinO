@@ -1,8 +1,8 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Spend;
+import com.example.demo.model.User;
 import com.example.demo.model.UserGroup;
-import com.example.demo.model.Wallet;
 
 import java.util.Date;
 
@@ -12,11 +12,11 @@ public class SpendDTO {
     private String category;
     private Long value;
     private Date date;
-    private Wallet wallet;
+    private User user;
     private UserGroup userGroup;
 
     public Spend toObject () {
-        Spend spend = new Spend(name, category, value,date, wallet, userGroup);
+        Spend spend = new Spend(name, category, value,date, user, userGroup);
         return spend;
     }
 
@@ -25,7 +25,7 @@ public class SpendDTO {
         System.out.println("Category"+this.category);
         System.out.println("Value"+this.value);
         System.out.println("Date"+this.date);
-        System.out.println("Wallet"+this.wallet);
+        System.out.println("User"+this.user);
         System.out.println("userGroup"+this.userGroup);
     }
 
@@ -61,12 +61,12 @@ public class SpendDTO {
         this.date = date;
     }
 
-    public Wallet getWallet () {
-        return wallet;
+    public User getUser () {
+        return user;
     }
 
-    public void setWallet (Wallet wallet) {
-        this.wallet = wallet;
+    public void setUser (User user) {
+        this.user = user;
     }
 
     public UserGroup getUserGroup () {

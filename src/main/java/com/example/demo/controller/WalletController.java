@@ -42,7 +42,7 @@ public class WalletController {
     public void delete (@PathVariable Long id) {
         walletRepository.findById(id)
                 .map(record -> {
-                    record.setUser(null);
+                    //record.setUser(null);
                     walletRepository.deleteById(id);
                     return null;
                 }).orElse(ResponseEntity.notFound().build());

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,13 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> listUser () {
         return new ResponseEntity<List<User>>(
-                    userRepository.findAll(), HttpStatus.OK
+                userRepository.findAll(), HttpStatus.OK
         );
     }
 
     /* Find user by id */
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id){
+    public ResponseEntity findById (@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
@@ -48,6 +49,7 @@ public class UserController {
                     record.setLogin(user.getLogin());
                     record.setPassword(user.getPassword());
                     record.setName(user.getName());
+                    record.setWallet(user.getWallet());
                     User updated = userRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
@@ -56,7 +58,11 @@ public class UserController {
     /* Delete user. */
     @DeleteMapping(path = {"/{id}"})
     public void delete (@PathVariable Long id) {
-        userRepository.deleteById(id);
+        userRepository.findById(id)
+                .map(record -> {
+                    record.setWallet(null);
+                    userRepository.deleteById(id);
+                    return null;
+                }).orElse(ResponseEntity.notFound().build());
     }
-
 }

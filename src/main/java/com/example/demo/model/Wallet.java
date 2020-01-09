@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,16 +23,15 @@ public class Wallet {
     @Column(name = "toReceive")
     private Double toReceive;
 
-    @OneToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User user;
+    public Wallet () {
+    }
 
-    public Wallet () {};
-    public Wallet (Double balance, Double toPay, Double toReceive, User user) {
+    ;
+
+    public Wallet (Double balance, Double toPay, Double toReceive) {
         this.balance = balance;
         this.toPay = toPay;
         this.toReceive = toReceive;
-        this.user = user;
     }
 
     public Long getId () {
@@ -62,13 +64,5 @@ public class Wallet {
 
     public void setToReceive (Double toReceive) {
         this.toReceive = toReceive;
-    }
-
-    public User getUser () {
-        return user;
-    }
-
-    public void setUser (User user) {
-        this.user = user;
     }
 }

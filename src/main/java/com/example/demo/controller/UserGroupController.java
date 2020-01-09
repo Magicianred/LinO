@@ -43,6 +43,14 @@ public class UserGroupController {
         userGroupRepository.deleteById(id);
     }
 
+    /* Get info from the wallet */
+    @GetMapping(path = {"/{id}"})
+    public ResponseEntity findById (@PathVariable Long id) {
+        return userGroupRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     /* Update userGroup */
     @PutMapping(value = "/{id}")
     public ResponseEntity update (@PathVariable("id") long id,

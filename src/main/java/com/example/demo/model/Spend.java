@@ -25,8 +25,8 @@ public class Spend {
     private Date date;
 
     @OneToOne
-    @JoinColumn(name = "walletId", referencedColumnName = "id")
-    private Wallet wallet;
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "userGroupId", referencedColumnName = "id")
@@ -34,7 +34,7 @@ public class Spend {
 
     public Spend (){};
 
-    public Spend (String name, String category, Long value, Date date, Wallet wallet, UserGroup userGroup) {
+    public Spend (String name, String category, Long value, Date date, User user, UserGroup userGroup) {
     }
 
     public Long getId () {
@@ -77,12 +77,12 @@ public class Spend {
         this.date = date;
     }
 
-    public Wallet getWallet () {
-        return wallet;
+    public User getUser () {
+        return user;
     }
 
-    public void setWallet (Wallet wallet) {
-        this.wallet = wallet;
+    public void setUser (User user) {
+        this.user = user;
     }
 
     public UserGroup getUserGroup () {
@@ -98,7 +98,7 @@ public class Spend {
         System.out.println("Category"+this.category);
         System.out.println("Value"+this.value);
         System.out.println("Date"+this.date);
-        System.out.println("Wallet"+this.wallet);
+        System.out.println("User"+this.user);
         System.out.println("userGroup"+this.userGroup);
     }
 }

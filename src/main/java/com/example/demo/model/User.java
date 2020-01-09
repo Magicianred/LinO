@@ -20,6 +20,18 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @OneToOne
+    @JoinColumn(name = "walletId", referencedColumnName = "id")
+    private Wallet wallet;
+
+    public Wallet getWallet () {
+        return wallet;
+    }
+
+    public void setWallet (Wallet wallet) {
+        this.wallet = wallet;
+    }
+
     public User (Long id) {
         this.id = id;
     }
@@ -64,5 +76,6 @@ public class User {
         System.out.println("Name: "+this.name);
         System.out.println("PASS: "+this.password);
         System.out.println("LOGIN: "+this.login);
+        System.out.println("WALLET: "+this.wallet);
     }
 }
