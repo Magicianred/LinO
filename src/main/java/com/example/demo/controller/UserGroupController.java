@@ -40,6 +40,7 @@ public class UserGroupController {
     /* Delete user from group */
     @DeleteMapping(path = {"/{id}"})
     public void delete (@PathVariable Long id) {
+
         userGroupRepository.deleteById(id);
     }
 

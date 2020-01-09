@@ -32,6 +32,10 @@ public class User {
         this.wallet = wallet;
     }
 
+    public void setWalletNull () {
+        this.wallet = null;
+    }
+
     public User (Long id) {
         this.id = id;
     }

@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +59,7 @@ public class UserController {
     public void delete (@PathVariable Long id) {
         userRepository.findById(id)
                 .map(record -> {
-                    record.setWallet(null);
+                    record.setWalletNull();
                     userRepository.deleteById(id);
                     return null;
                 }).orElse(ResponseEntity.notFound().build());
