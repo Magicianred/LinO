@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.business.SpendBusiness;
 import com.example.demo.model.Spend;
+import com.example.demo.model.Wallet;
 import com.example.demo.repository.SpendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,23 @@ public class SpendController {
                     record.setUserGroup(null);
                     spendRepository.deleteById(id);
                     return null;
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    /* Update info into the wallet */
+    @PutMapping(value = "/{id}")
+    public ResponseEntity update (@PathVariable("id") long id,
+                                  @RequestBody Spend spend) {
+        return spendRepository.findById(id)
+                .map(record -> {
+                    record.setUserGroup(spend.getUserGroup());
+                    record.setUser(spend.getUser());
+                    record.setCategory(spend.getCategory());
+                    record.setDate(spend.getDate());
+                    record.setName(spend.getName());
+                    record.setValue(spend.getValue());
+                    Spend updated = spendRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
     }
 }
