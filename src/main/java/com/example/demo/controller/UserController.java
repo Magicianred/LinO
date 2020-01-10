@@ -31,6 +31,12 @@ public class UserController {
         );
     }
 
+    /* List user */
+    @GetMapping(path = {"/login"})
+    public ResponseEntity<User> listUserByLoginAndPassword (@RequestBody User user) {
+        return new ResponseEntity<User>(userRepository.findByLoginAndPassword(user.getLogin(),user.getPassword()), HttpStatus.OK);
+    }
+
     /* Find user by id */
     @GetMapping(path = {"/{id}"})
     public ResponseEntity findById (@PathVariable Long id) {
