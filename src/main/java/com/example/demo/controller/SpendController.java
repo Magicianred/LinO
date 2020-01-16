@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.business.SpendBusiness;
 import com.example.demo.model.Spend;
-import com.example.demo.model.Wallet;
+import com.example.demo.model.User;
 import com.example.demo.repository.SpendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,11 +28,19 @@ public class SpendController {
         return spendBusiness.save(spend);
     }
 
-    /* List all users */
+    /* List all spend */
     @GetMapping
     public ResponseEntity<List<Spend>> listSpend () {
         return new ResponseEntity<List<Spend>>(
                 spendRepository.findAll(), HttpStatus.OK
+        );
+    }
+
+    /* Find spend by user */
+    @GetMapping(path = {"/user/{id}"})
+    public ResponseEntity<List<Spend>> listSpendByUser (@PathVariable Long id) {
+        return new ResponseEntity<List<Spend>>(
+                spendRepository.findByUserIdIs(id), HttpStatus.OK
         );
     }
 
