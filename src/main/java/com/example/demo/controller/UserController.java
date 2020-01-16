@@ -32,7 +32,7 @@ public class UserController {
     }
 
     /* List user */
-    @GetMapping(path = {"/login"})
+    @PostMapping(path = {"/login"})
     public ResponseEntity<User> listUserByLoginAndPassword (@RequestBody User user) {
         return new ResponseEntity<User>(userRepository.findByLoginAndPassword(user.getLogin(),user.getPassword()), HttpStatus.OK);
     }
