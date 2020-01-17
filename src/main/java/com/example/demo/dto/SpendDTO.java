@@ -12,11 +12,12 @@ public class SpendDTO {
     private String category;
     private Long value;
     private Date date;
-    private User user;
+    private User payer;
+    private User receiver;
     private UserGroup userGroup;
 
     public Spend toObject () {
-        Spend spend = new Spend(name, category, value,date, user, userGroup);
+        Spend spend = new Spend(name, category, value,date, payer, receiver, userGroup);
         return spend;
     }
 
@@ -25,7 +26,8 @@ public class SpendDTO {
         System.out.println("Category"+this.category);
         System.out.println("Value"+this.value);
         System.out.println("Date"+this.date);
-        System.out.println("User"+this.user);
+        System.out.println("User"+this.payer);
+        System.out.println("User"+this.receiver);
         System.out.println("userGroup"+this.userGroup);
     }
 
@@ -61,12 +63,20 @@ public class SpendDTO {
         this.date = date;
     }
 
-    public User getUser () {
-        return user;
+    public User getPayer () {
+        return payer;
     }
 
-    public void setUser (User user) {
-        this.user = user;
+    public void setPayer (User payer) {
+        this.payer = payer;
+    }
+
+    public User getReceiver () {
+        return receiver;
+    }
+
+    public void setReceiver (User receiver) {
+        this.receiver = receiver;
     }
 
     public UserGroup getUserGroup () {

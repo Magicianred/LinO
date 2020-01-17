@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.business.SpendBusiness;
 import com.example.demo.model.Spend;
-import com.example.demo.model.User;
 import com.example.demo.repository.SpendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,7 +48,8 @@ public class SpendController {
     public void delete (@PathVariable Long id) {
         spendRepository.findById(id)
                 .map(record -> {
-                    record.setUser(null);
+                    record.setPayer(null);
+                    record.setReceiver(null);
                     record.setUserGroup(null);
                     spendRepository.deleteById(id);
                     return null;
@@ -63,7 +63,8 @@ public class SpendController {
         return spendRepository.findById(id)
                 .map(record -> {
                     record.setUserGroup(spend.getUserGroup());
-                    record.setUser(spend.getUser());
+                    record.setPayer(spend.getPayer());
+                    record.setReceiver(spend.getReceiver());
                     record.setCategory(spend.getCategory());
                     record.setDate(spend.getDate());
                     record.setName(spend.getName());

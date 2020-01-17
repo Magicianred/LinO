@@ -24,11 +24,13 @@ public class SpendBusiness {
     public Spend save (Spend spend) {
 
         UserGroup userGroup = userGroupRepository.findById(spend.getUserGroup().getId()).orElse(null);
-        User user = userRepository.findById(spend.getUser().getId()).orElse(null);
+        User payer = userRepository.findById(spend.getPayer().getId()).orElse(null);
+        User receiver = userRepository.findById(spend.getReceiver().getId()).orElse(null);
 
-        if (userGroup != null && user != null) {
+        if (userGroup != null && payer != null && receiver != null) {
             spend.setUserGroup(userGroup);
-            spend.setUser(user);
+            spend.setPayer(payer);
+            spend.setReceiver(receiver);
             spendRepository.save(spend);
             return spend;
         } else {

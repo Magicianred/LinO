@@ -25,8 +25,12 @@ public class Spend {
     private Date date;
 
     @OneToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User user;
+    @JoinColumn(name = "userIdPayer", referencedColumnName = "id")
+    private User payer;
+
+    @OneToOne
+    @JoinColumn(name = "userIdReceiver", referencedColumnName = "id")
+    private User receiver;
 
     @OneToOne
     @JoinColumn(name = "userGroupId", referencedColumnName = "id")
@@ -34,7 +38,7 @@ public class Spend {
 
     public Spend (){};
 
-    public Spend (String name, String category, Long value, Date date, User user, UserGroup userGroup) {
+    public Spend (String name, String category, Long value, Date date, User payer, User receiver, UserGroup userGroup) {
     }
 
     public Long getId () {
@@ -77,12 +81,20 @@ public class Spend {
         this.date = date;
     }
 
-    public User getUser () {
-        return user;
+    public User getPayer () {
+        return payer;
     }
 
-    public void setUser (User user) {
-        this.user = user;
+    public void setPayer (User payer) {
+        this.payer = payer;
+    }
+
+    public User getReceiver () {
+        return receiver;
+    }
+
+    public void setReceiver (User receiver) {
+        this.receiver = receiver;
     }
 
     public UserGroup getUserGroup () {
@@ -98,7 +110,8 @@ public class Spend {
         System.out.println("Category"+this.category);
         System.out.println("Value"+this.value);
         System.out.println("Date"+this.date);
-        System.out.println("User"+this.user);
+        System.out.println("User How Pay"+this.payer);
+        System.out.println("User How Receive"+this.receiver);
         System.out.println("userGroup"+this.userGroup);
     }
 }

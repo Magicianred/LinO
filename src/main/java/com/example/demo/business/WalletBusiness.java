@@ -1,6 +1,5 @@
 package com.example.demo.business;
 
-import com.example.demo.model.User;
 import com.example.demo.model.Wallet;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.WalletRepository;
