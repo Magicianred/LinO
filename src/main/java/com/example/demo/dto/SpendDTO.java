@@ -17,7 +17,7 @@ public class SpendDTO {
     private UserGroup userGroup;
 
     public Spend toObject () {
-        Spend spend = new Spend(name, category, value,date, payer, receiver, userGroup);
+        Spend spend = new Spend(name, category, value, date, payer, receiver, userGroup);
         return spend;
     }
 

@@ -8,6 +8,6 @@ import java.util.List;
 // Estende pois ao declara a interface o spring gera todos os métodos de consulta ao banco.
 public interface SpendRepository extends JpaRepository <Spend, Long> {
 
-    List<Spend> findByUserIdIs(Long userId);
+    List<Spend> findByReceiverIdIs(Long userId);
 
 }

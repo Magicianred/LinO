@@ -39,7 +39,7 @@ public class SpendController {
     @GetMapping(path = {"/user/{id}"})
     public ResponseEntity<List<Spend>> listSpendByUser (@PathVariable Long id) {
         return new ResponseEntity<List<Spend>>(
-                spendRepository.findByUserIdIs(id), HttpStatus.OK
+                spendRepository.findByReceiverIdIs(id), HttpStatus.OK
         );
     }
 

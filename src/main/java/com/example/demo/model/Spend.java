@@ -25,11 +25,11 @@ public class Spend {
     private Date date;
 
     @OneToOne
-    @JoinColumn(name = "userIdPayer", referencedColumnName = "id")
+    @JoinColumn(name = "payer", referencedColumnName = "id")
     private User payer;
 
     @OneToOne
-    @JoinColumn(name = "userIdReceiver", referencedColumnName = "id")
+    @JoinColumn(name = "receiver", referencedColumnName = "id")
     private User receiver;
 
     @OneToOne
@@ -39,6 +39,13 @@ public class Spend {
     public Spend (){};
 
     public Spend (String name, String category, Long value, Date date, User payer, User receiver, UserGroup userGroup) {
+        this.name=name;
+        this.category=category;
+        this.value=value;
+        this.date=date;
+        this.payer=payer;
+        this.receiver=receiver;
+        this.userGroup=userGroup;
     }
 
     public Long getId () {

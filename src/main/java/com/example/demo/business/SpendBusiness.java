@@ -27,7 +27,7 @@ public class SpendBusiness {
         User payer = userRepository.findById(spend.getPayer().getId()).orElse(null);
         User receiver = userRepository.findById(spend.getReceiver().getId()).orElse(null);
 
-        if (userGroup != null && payer != null && receiver != null) {
+        if (userGroup != null) {
             spend.setUserGroup(userGroup);
             spend.setPayer(payer);
             spend.setReceiver(receiver);
