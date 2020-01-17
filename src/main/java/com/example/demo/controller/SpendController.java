@@ -35,11 +35,19 @@ public class SpendController {
         );
     }
 
-    /* Find spend by user */
-    @GetMapping(path = {"/user/{id}"})
-    public ResponseEntity<List<Spend>> listSpendByUser (@PathVariable Long id) {
+    /* Find spend by receiver */
+    @GetMapping(path = {"/receiver/{id}"})
+    public ResponseEntity<List<Spend>> listSpendByReceiver (@PathVariable Long id) {
         return new ResponseEntity<List<Spend>>(
                 spendRepository.findByReceiverIdIs(id), HttpStatus.OK
+        );
+    }
+
+    /* Find spend by payer */
+    @GetMapping(path = {"/payer/{id}"})
+    public ResponseEntity<List<Spend>> listSpendByPayer (@PathVariable Long id) {
+        return new ResponseEntity<List<Spend>>(
+                spendRepository.findByPayerIdIs(id), HttpStatus.OK
         );
     }
 

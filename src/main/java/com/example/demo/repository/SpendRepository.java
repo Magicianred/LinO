@@ -10,4 +10,6 @@ public interface SpendRepository extends JpaRepository <Spend, Long> {
 
     List<Spend> findByReceiverIdIs(Long userId);
 
+    List<Spend> findByPayerIdIs(Long userId);
+
 }
