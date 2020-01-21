@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.business.SpendBusiness;
 import com.example.demo.model.Spend;
+import com.example.demo.model.User;
+import com.example.demo.model.Wallet;
 import com.example.demo.repository.SpendRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,9 @@ public class SpendController {
 
     @Autowired
     private SpendRepository spendRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private SpendBusiness spendBusiness;
@@ -80,5 +86,30 @@ public class SpendController {
                     Spend updated = spendRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
+    }
+
+    /* Pay . */
+    @PutMapping(value = "/payOrReceive/{id}")
+    public ResponseEntity payOrReceive (@PathVariable("id") long id,
+                               @RequestBody Spend spend) {
+
+
+        Double walletBalancePayer = spend.getPayer().getWallet().getBalance();
+        Double walletBalanceReceiver = spend.getReceiver().getWallet().getBalance();
+        Long value = spend.getValue();
+
+        Double finalValuePayer = walletBalancePayer-value;
+        Double finalValueReceiver = walletBalanceReceiver+value;
+
+        Wallet payerWallet = spend.getPayer().getWallet();
+        Wallet receiverWallet = spend.getReceiver().getWallet();
+
+        User payerUser = spend.getPayer();
+        User receiverUser = spend.getReceiver();
+
+        payerWallet.setBalance(finalValuePayer);
+        receiverWallet.setBalance(finalValueReceiver);
+
+        return (ResponseEntity) ResponseEntity.ok();
     }
 }
